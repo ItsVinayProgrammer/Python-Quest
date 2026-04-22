@@ -25,14 +25,14 @@ This one weaponizes it.
 
 ## THE FLEX LIST (SUPERPOWERS)
 
-- 🚀 **Challenge Reactor**: Run Python challenge attempts with instant pass/fail feedback and detailed output diffing.
-- 🧠 **AI Mentor Mode**: Get hints, code explanations, and concept clarification without getting the final answer spoon-fed.
-- ⚡ **Draft Recovery Shield**: Auto-saves challenge code drafts and restores them after interruptions.
-- 🏆 **XP + Badge Economy**: Every solved challenge compounds into streaks, badges, and profile-level credibility.
-- 🔐 **Credential Hardening**: Salted password hashing with strict validation and safer auth flow handling.
-- 🛡️ **XSS Armor**: Untrusted AI/code content is sanitized and rendered safely.
-- 🧭 **Learning Path Commander**: Day-by-day progression with lock/unlock logic and selective early unlock flow.
-- 🧱 **Fault-Tolerant UI**: Error boundary containment prevents single-screen failure from nuking the app shell.
+- **Challenge Reactor**: Run Python challenge attempts with instant pass/fail feedback and detailed output diffing.
+- **AI Mentor Mode**: Get hints, code explanations, and concept clarification without getting the final answer spoon-fed.
+- **Draft Recovery Shield**: Auto-saves challenge code drafts and restores them after interruptions.
+- **XP + Badge Economy**: Every solved challenge compounds into streaks, badges, and profile-level credibility.
+- **Credential Hardening**: Salted password hashing with strict validation and safer auth flow handling.
+- **XSS Armor**: Untrusted AI/code content is sanitized and rendered safely.
+- **Learning Path Commander**: Day-by-day progression with lock/unlock logic and selective early unlock flow.
+- **Fault-Tolerant UI**: Error boundary containment prevents single-screen failure from nuking the app shell.
 
 ---
 
