@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Quest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --font-sans: 'Inter', sans-serif;
+        --color-background: #0E1A2B;
+        --color-surface: #1B2735;
+        --color-surface-translucent: rgba(27, 39, 53, 0.5);
+        --color-border: #2C3A4B;
+        --color-text-main: #F0F4F8;
+        --color-text-muted: #8A9CB1;
+        --color-primary: #00BFFF; /* DeepSkyBlue */
+        --color-primary-hover: #40CFFF;
+        --color-secondary: #a78bfa; /* violet-400 */
+        --color-warning: #FFD700; /* Gold */
+        --color-danger: #F94144;
+        --color-success: #4FD1C5; /* A vibrant teal */
+        --color-danger-muted: rgba(249, 65, 68, 0.15);
+        --color-success-muted: rgba(79, 209, 197, 0.1);
+
+        /* Skill Colors */
+        --skill-color-basics: #38bdf8; /* sky-400 */
+        --skill-color-variables: #a78bfa; /* violet-400 */
+        --skill-color-data-structures: #34d399; /* emerald-400 */
+        --skill-color-control-flow: #fb7185; /* rose-400 */
+        --skill-color-functions: #f59e0b; /* amber-500 */
+        --skill-color-oop: #818cf8; /* indigo-400 */
+        --skill-color-concepts: #22d3ee; /* cyan-400 */
+        --skill-color-modules: #e879f9; /* fuchsia-400 */
+        --skill-color-file-io: #a3e635; /* lime-400 */
+        --skill-color-advanced: #FFD700; /* gold */
+        --skill-color-default: var(--color-border);
+      }
+      /* Dynamically set skill color for use in components */
+      .skill-basics { --skill-color: var(--skill-color-basics); }
+      .skill-variables { --skill-color: var(--skill-color-variables); }
+      .skill-data-structures { --skill-color: var(--skill-color-data-structures); }
+      .skill-control-flow { --skill-color: var(--skill-color-control-flow); }
+      .skill-functions { --skill-color: var(--skill-color-functions); }
+      .skill-oop { --skill-color: var(--skill-color-oop); }
+      .skill-concepts { --skill-color: var(--skill-color-concepts); }
+      .skill-modules { --skill-color: var(--skill-color-modules); }
+      .skill-file-io { --skill-color: var(--skill-color-file-io); }
+      .skill-advanced { --skill-color: var(--skill-color-advanced); }
+
+      body {
+        font-family: var(--font-sans);
+        background-color: var(--color-background);
+        color: var(--color-text-main);
+      }
+      .prose {
+        color: var(--color-text-main);
+      }
+      .prose-invert a {
+        color: var(--color-primary);
+      }
+      .prose-invert a:hover {
+        color: var(--color-primary-hover);
+      }
+      .prose-invert code {
+        color: var(--color-text-main);
+      }
+      .prose-invert pre {
+        background-color: #0B1726; /* A slightly darker background for code */
+        border: 1px solid var(--color-border);
+      }
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px) scale(0.98);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+      .animate-fade-in-up {
+        animation: fade-in-up 0.5s ease-out forwards;
+        opacity: 0;
+      }
+      /* New styles for AI Explainer */
+      .ai-explainer-details {
+        background-color: var(--color-background);
+        border: 1px solid var(--color-border);
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        transition: background-color 0.2s;
+      }
+      .ai-explainer-details[open], .ai-explainer-details:hover {
+        background-color: #0B1726;
+      }
+      .ai-explainer-summary {
+        padding: 0.75rem 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--color-text-main);
+        list-style: none; /* remove default arrow */
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .ai-explainer-summary::-webkit-details-marker {
+        display: none; /* remove default arrow for chrome */
+      }
+      .ai-explainer-summary::before {
+        content: '▶';
+        display: inline-block;
+        font-size: 0.6em;
+        transition: transform 0.2s;
+        transform-origin: center;
+        color: var(--color-primary);
+      }
+      .ai-explainer-details[open] > .ai-explainer-summary::before {
+        transform: rotate(90deg);
+      }
+      .ai-explainer-content {
+        padding: 0 1rem 1rem 1rem;
+        border-top: 1px solid var(--color-border);
+      }
+      
+      /* Styles for Celebration Animation */
+      .confetti-piece {
+        position: absolute;
+        opacity: 0;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-20vh) rotateZ(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(120vh) rotateZ(720deg);
+          opacity: 0;
+        }
+      }
+
+      .success-toast {
+        animation: success-toast-in-out 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      }
+
+      @keyframes success-toast-in-out {
+        0%, 100% {
+          transform: translate(-50%, 200px);
+          opacity: 0;
+        }
+        10%, 90% {
+          transform: translate(-50%, 0);
+          opacity: 1;
+        }
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.11.0",
+    "diff": "https://esm.sh/diff@^8.0.2"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
